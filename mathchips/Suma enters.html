@@ -1047,16 +1047,20 @@ function CheckAnswers(){
 
 		if (State[i].AnsweredCorrectly == false){
 //If it's right, calculate its score
+			var TotalChars = GetGapValue(i).length;
 			if (CheckAnswer(i, true) > -1){
-				var TotalChars = GetGapValue(i).length;
 				State[i].ItemScore = (TotalChars-State[i].HintsAndChecks)/TotalChars;
 				if (State[i].ClueGiven == true){State[i].ItemScore /= 2;}
 				if (State[i].ItemScore <0 ){State[i].ItemScore = 0;}
 				State[i].AnsweredCorrectly = true;
 //Drop the correct answer into the page, replacing the text box
 				SetCorrectAnswer(i, GetGapValue(i));
-			}
-			else{
+
+			}  else if (TotalChars == 0){
+				// No hi ha resposta.			
+				AllCorrect = false;
+
+			} else {
 //Otherwise, increment the hints for this item, as a penalty
 				State[i].HintsAndChecks++;
 
@@ -1448,7 +1452,7 @@ function Modificar_I(){
 <!-- BeginSubmissionForm -->
 
 <!-- EndSubmissionForm -->
-
+versió: 1.01
 </body>
 
 </html>

@@ -4,12 +4,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
 <meta name="dc:creator" content="@xjavedu" />
-<meta name="dc:title" content="Resta d'enters" />
+<meta name="dc:title" content="Suma i Resta d'enters" />
 
 
 
 <title>
-Resta d'enters
+Suma i Resta d'enters
 </title>
 
 <!-- Made with executable version 7.0 Release 2 Build 0 -->
@@ -1047,20 +1047,16 @@ function CheckAnswers(){
 
 		if (State[i].AnsweredCorrectly == false){
 //If it's right, calculate its score
-			var TotalChars = GetGapValue(i).length;
 			if (CheckAnswer(i, true) > -1){
+				var TotalChars = GetGapValue(i).length;
 				State[i].ItemScore = (TotalChars-State[i].HintsAndChecks)/TotalChars;
 				if (State[i].ClueGiven == true){State[i].ItemScore /= 2;}
 				if (State[i].ItemScore <0 ){State[i].ItemScore = 0;}
 				State[i].AnsweredCorrectly = true;
 //Drop the correct answer into the page, replacing the text box
 				SetCorrectAnswer(i, GetGapValue(i));
-
-			}  else if (TotalChars == 0){
-				// No hi ha resposta.			
-				AllCorrect = false;
-
-			} else {
+			}
+			else{
 //Otherwise, increment the hints for this item, as a penalty
 				State[i].HintsAndChecks++;
 
@@ -1272,9 +1268,9 @@ function TypeChars(Chars){
 
 
 //Xavi **********************************************************************************************************************************************************************************************
-str_Titol = "Resta d'enters";
+str_Titol = "Suma i Resta d'enters";
 str_Subtitol = "Calcula..."
-str_Descripcio = "Calcula les següents operacions amb nombres enters. Pots fer-la fitxa tantes vegades com vulguis. Fes captura de pantalla amb la puntuació màxima i envia'm la foto per correu. Recordeu que als resultats positius no cal afegir el signe al davant." 
+str_Descripcio = "Calcula les següents operacions amb nombres enters, sense escriure els parèntesis. Pots fer-la fitxa tantes vegades com vulguis. Fes captura de pantalla amb la puntuació màxima i envia'm la foto per correu. Recordeu que als resultats positius no cal afegir el signe al davant." 
 Respuestas = []
 
 function getRndInteger(min, max) {
@@ -1290,59 +1286,21 @@ function Pregunta1(){
 	var str_b= b.toString()
 
 	if (a_signo == 2){
-		str_a_op= '-' + str_a
-		str_a = '+' + str_a
+		str_a = str_a
 	} else {
-		str_a_op= '+' + str_a
 		str_a = '-' + str_a
 	}
 
 	if (b_signo == 2){
-		str_b_op= '-' + str_b
 		str_b = '+' + str_b
 	} else {
-		str_b_op= '+' + str_b
 		str_b = '-' + str_b
 	}
 
-	var resultado1= '(' + str_a + ')+(' + str_b_op + ')'
-	var resultado2= Math.pow(-1, a_signo) * a - Math.pow(-1, b_signo) * b
+	var resultado= Math.pow(-1, a_signo) * a + Math.pow(-1, b_signo) * b
 
-	Respuestas.push(resultado1)
-	Respuestas.push(resultado2)
-	return '(' + str_a + ') - (' + str_b + ')= '
-}
-
-function Pregunta2(){
-	var a= getRndInteger(1, 10)
-	var b= getRndInteger(1, 10)
-	var a_signo= getRndInteger(1,3)
-	var b_signo= getRndInteger(1,3)
-	var str_a= a.toString()
-	var str_b= b.toString()
-
-	if (a_signo == 2){
-		str_a_op= '-' + str_a
-		str_a = '+' + str_a
-	} else {
-		str_a_op= '+' + str_a
-		str_a = '-' + str_a
-	}
-
-	if (b_signo == 2){
-		str_b_op= '-' + str_b
-		str_b = '+' + str_b
-	} else {
-		str_b_op= '+' + str_b
-		str_b = '-' + str_b
-	}
-
-	var resultado1= '(' + str_a_op + ')+(' + str_b_op + ')'
-	var resultado2= - Math.pow(-1, a_signo) * a - Math.pow(-1, b_signo) * b
-
-	Respuestas.push(resultado1)
-	Respuestas.push(resultado2)
-	return '-(' + str_a + ') - (' + str_b + ')= '
+	Respuestas.push(resultado)
+	return str_a +' '+ str_b + '= '
 }
 
 function Modificar_I(){
@@ -1431,26 +1389,22 @@ function Modificar_I(){
 <div class="ClozeBody">
 
 Exemple 1: <br >
-(+2)-(+5) = (+2)+(-5) = -3 <br >
+2 -5 = -3 <br >
 Exemple 2: <br >
--(-3)-(+4) = (+3)+(-4) = -1 <br >
+-3 + 4 = 1 <br >
 <br >
-a. <script type="text/javascript">document.write(Pregunta1())</script> <span class="GapSpan" id="GapSpan0"><input type="text" autocomplete="off" id="Gap0" onfocus="TrackFocus(0)" onblur="LeaveGap()" class="GapBox" size="9"/></span> = <span class="GapSpan" id="GapSpan1"><input type="text" autocomplete="off" id="Gap1" onfocus="TrackFocus(1)" onblur="LeaveGap()" class="GapBox" size="6"/></span> <br >
-b. <script type="text/javascript">document.write(Pregunta1())</script> <span class="GapSpan" id="GapSpan2"><input type="text" autocomplete="off" id="Gap2" onfocus="TrackFocus(2)" onblur="LeaveGap()" class="GapBox" size="9"/></span> = <span class="GapSpan" id="GapSpan3"><input type="text" autocomplete="off" id="Gap3" onfocus="TrackFocus(3)" onblur="LeaveGap()" class="GapBox" size="6"/></span> <br >
-c. <script type="text/javascript">document.write(Pregunta1())</script> <span class="GapSpan" id="GapSpan4"><input type="text" autocomplete="off" id="Gap4" onfocus="TrackFocus(4)" onblur="LeaveGap()" class="GapBox" size="9"/></span> = <span class="GapSpan" id="GapSpan5"><input type="text" autocomplete="off" id="Gap5" onfocus="TrackFocus(5)" onblur="LeaveGap()" class="GapBox" size="6"/></span> <br >
-d. <script type="text/javascript">document.write(Pregunta1())</script> <span class="GapSpan" id="GapSpan6"><input type="text" autocomplete="off" id="Gap6" onfocus="TrackFocus(6)" onblur="LeaveGap()" class="GapBox" size="9"/></span> = <span class="GapSpan" id="GapSpan7"><input type="text" autocomplete="off" id="Gap7" onfocus="TrackFocus(7)" onblur="LeaveGap()" class="GapBox" size="6"/></span> <br >
-e. <script type="text/javascript">document.write(Pregunta1())</script> <span class="GapSpan" id="GapSpan8"><input type="text" autocomplete="off" id="Gap8" onfocus="TrackFocus(8)" onblur="LeaveGap()" class="GapBox" size="9"/></span> = <span class="GapSpan" id="GapSpan9"><input type="text" autocomplete="off" id="Gap9" onfocus="TrackFocus(9)" onblur="LeaveGap()" class="GapBox" size="6"/></span> <br >
-f. <script type="text/javascript">document.write(Pregunta1())</script> <span class="GapSpan" id="GapSpan10"><input type="text" autocomplete="off" id="Gap10" onfocus="TrackFocus(10)" onblur="LeaveGap()" class="GapBox" size="9"/></span> = <span class="GapSpan" id="GapSpan11"><input type="text" autocomplete="off" id="Gap11" onfocus="TrackFocus(11)" onblur="LeaveGap()" class="GapBox" size="6"/></span> <br >
-g. <script type="text/javascript">document.write(Pregunta1())</script> <span class="GapSpan" id="GapSpan12"><input type="text" autocomplete="off" id="Gap12" onfocus="TrackFocus(12)" onblur="LeaveGap()" class="GapBox" size="9"/></span> = <span class="GapSpan" id="GapSpan13"><input type="text" autocomplete="off" id="Gap13" onfocus="TrackFocus(13)" onblur="LeaveGap()" class="GapBox" size="6"/></span> <br >
-h. <script type="text/javascript">document.write(Pregunta1())</script> <span class="GapSpan" id="GapSpan14"><input type="text" autocomplete="off" id="Gap14" onfocus="TrackFocus(14)" onblur="LeaveGap()" class="GapBox" size="9"/></span> = <span class="GapSpan" id="GapSpan15"><input type="text" autocomplete="off" id="Gap15" onfocus="TrackFocus(15)" onblur="LeaveGap()" class="GapBox" size="6"/></span> <br >
-i. <script type="text/javascript">document.write(Pregunta2())</script> <span class="GapSpan" id="GapSpan16"><input type="text" autocomplete="off" id="Gap16" onfocus="TrackFocus(16)" onblur="LeaveGap()" class="GapBox" size="9"/></span> = <span class="GapSpan" id="GapSpan17"><input type="text" autocomplete="off" id="Gap17" onfocus="TrackFocus(17)" onblur="LeaveGap()" class="GapBox" size="6"/></span> <br >
-j. <script type="text/javascript">document.write(Pregunta2())</script> <span class="GapSpan" id="GapSpan18"><input type="text" autocomplete="off" id="Gap18" onfocus="TrackFocus(18)" onblur="LeaveGap()" class="GapBox" size="9"/></span> = <span class="GapSpan" id="GapSpan19"><input type="text" autocomplete="off" id="Gap19" onfocus="TrackFocus(19)" onblur="LeaveGap()" class="GapBox" size="6"/></span> <br >
-k. <script type="text/javascript">document.write(Pregunta2())</script> <span class="GapSpan" id="GapSpan20"><input type="text" autocomplete="off" id="Gap20" onfocus="TrackFocus(20)" onblur="LeaveGap()" class="GapBox" size="9"/></span> = <span class="GapSpan" id="GapSpan21"><input type="text" autocomplete="off" id="Gap21" onfocus="TrackFocus(21)" onblur="LeaveGap()" class="GapBox" size="6"/></span> <br >
-l. <script type="text/javascript">document.write(Pregunta2())</script> <span class="GapSpan" id="GapSpan22"><input type="text" autocomplete="off" id="Gap22" onfocus="TrackFocus(22)" onblur="LeaveGap()" class="GapBox" size="9"/></span> = <span class="GapSpan" id="GapSpan23"><input type="text" autocomplete="off" id="Gap23" onfocus="TrackFocus(23)" onblur="LeaveGap()" class="GapBox" size="6"/></span> <br >
-m. <script type="text/javascript">document.write(Pregunta2())</script> <span class="GapSpan" id="GapSpan24"><input type="text" autocomplete="off" id="Gap24" onfocus="TrackFocus(24)" onblur="LeaveGap()" class="GapBox" size="9"/></span> = <span class="GapSpan" id="GapSpan25"><input type="text" autocomplete="off" id="Gap25" onfocus="TrackFocus(25)" onblur="LeaveGap()" class="GapBox" size="6"/></span> <br >
-n. <script type="text/javascript">document.write(Pregunta2())</script> <span class="GapSpan" id="GapSpan26"><input type="text" autocomplete="off" id="Gap26" onfocus="TrackFocus(26)" onblur="LeaveGap()" class="GapBox" size="9"/></span> = <span class="GapSpan" id="GapSpan27"><input type="text" autocomplete="off" id="Gap27" onfocus="TrackFocus(27)" onblur="LeaveGap()" class="GapBox" size="6"/></span> <br >
-o. <script type="text/javascript">document.write(Pregunta2())</script> <span class="GapSpan" id="GapSpan28"><input type="text" autocomplete="off" id="Gap28" onfocus="TrackFocus(28)" onblur="LeaveGap()" class="GapBox" size="9"/></span> = <span class="GapSpan" id="GapSpan29"><input type="text" autocomplete="off" id="Gap29" onfocus="TrackFocus(29)" onblur="LeaveGap()" class="GapBox" size="6"/></span> <br >
-p. <script type="text/javascript">document.write(Pregunta2())</script> <span class="GapSpan" id="GapSpan30"><input type="text" autocomplete="off" id="Gap30" onfocus="TrackFocus(30)" onblur="LeaveGap()" class="GapBox" size="9"/></span> = <span class="GapSpan" id="GapSpan31"><input type="text" autocomplete="off" id="Gap31" onfocus="TrackFocus(31)" onblur="LeaveGap()" class="GapBox" size="6"/></span> <br >
+a. <script type="text/javascript">document.write(Pregunta1())</script> <span class="GapSpan" id="GapSpan0"><input type="text" autocomplete="off" id="Gap0" onfocus="TrackFocus(0)" onblur="LeaveGap()" class="GapBox" size="6"/></span> <br >
+b. <script type="text/javascript">document.write(Pregunta1())</script> <span class="GapSpan" id="GapSpan1"><input type="text" autocomplete="off" id="Gap1" onfocus="TrackFocus(1)" onblur="LeaveGap()" class="GapBox" size="6"/></span> <br >
+c. <script type="text/javascript">document.write(Pregunta1())</script> <span class="GapSpan" id="GapSpan2"><input type="text" autocomplete="off" id="Gap2" onfocus="TrackFocus(2)" onblur="LeaveGap()" class="GapBox" size="6"/></span> <br >
+d. <script type="text/javascript">document.write(Pregunta1())</script> <span class="GapSpan" id="GapSpan3"><input type="text" autocomplete="off" id="Gap3" onfocus="TrackFocus(3)" onblur="LeaveGap()" class="GapBox" size="6"/></span> <br >
+e. <script type="text/javascript">document.write(Pregunta1())</script> <span class="GapSpan" id="GapSpan4"><input type="text" autocomplete="off" id="Gap4" onfocus="TrackFocus(4)" onblur="LeaveGap()" class="GapBox" size="6"/></span> <br >
+f. <script type="text/javascript">document.write(Pregunta1())</script> <span class="GapSpan" id="GapSpan5"><input type="text" autocomplete="off" id="Gap5" onfocus="TrackFocus(5)" onblur="LeaveGap()" class="GapBox" size="6"/></span> <br >
+g. <script type="text/javascript">document.write(Pregunta1())</script> <span class="GapSpan" id="GapSpan6"><input type="text" autocomplete="off" id="Gap6" onfocus="TrackFocus(6)" onblur="LeaveGap()" class="GapBox" size="6"/></span> <br >
+h. <script type="text/javascript">document.write(Pregunta1())</script> <span class="GapSpan" id="GapSpan7"><input type="text" autocomplete="off" id="Gap7" onfocus="TrackFocus(7)" onblur="LeaveGap()" class="GapBox" size="6"/></span> <br >
+i. <script type="text/javascript">document.write(Pregunta1())</script> <span class="GapSpan" id="GapSpan8"><input type="text" autocomplete="off" id="Gap8" onfocus="TrackFocus(8)" onblur="LeaveGap()" class="GapBox" size="6"/></span> <br >
+j. <script type="text/javascript">document.write(Pregunta1())</script> <span class="GapSpan" id="GapSpan9"><input type="text" autocomplete="off" id="Gap9" onfocus="TrackFocus(9)" onblur="LeaveGap()" class="GapBox" size="6"/></span> <br >
+k. <script type="text/javascript">document.write(Pregunta1())</script> <span class="GapSpan" id="GapSpan10"><input type="text" autocomplete="off" id="Gap10" onfocus="TrackFocus(10)" onblur="LeaveGap()" class="GapBox" size="6"/></span> <br >
+l. <script type="text/javascript">document.write(Pregunta1())</script> <span class="GapSpan" id="GapSpan11"><input type="text" autocomplete="off" id="Gap11" onfocus="TrackFocus(11)" onblur="LeaveGap()" class="GapBox" size="6"/></span> <br >
 
 
 <script type="text/javascript">Modificar_I()</script>
@@ -1487,7 +1441,7 @@ p. <script type="text/javascript">document.write(Pregunta2())</script> <span cla
 <!-- BeginSubmissionForm -->
 
 <!-- EndSubmissionForm -->
-versió: 1.01
+
 </body>
 
 </html>
