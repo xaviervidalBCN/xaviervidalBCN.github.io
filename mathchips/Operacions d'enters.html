@@ -4,12 +4,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
 <meta name="dc:creator" content="@xjavedu" />
-<meta name="dc:title" content="Sistemes d'equacions'" />
+<meta name="dc:title" content="Operacions amb Enters" />
 
 
 
 <title>
-Resolució de sistemes d'equacions'
+Operacions amb Enters
 </title>
 
 <!-- Made with executable version 7.0 Release 2 Build 0 -->
@@ -1272,102 +1272,110 @@ function TypeChars(Chars){
 
 
 //Description **********************************************************************************************************************************************************************************************
-str_Titol = "Sistema d'equacions";
-str_Subtitol = "Troba la x i la y d'aquests sistemes d'equacions..."
-str_Descripcio1 = "Mètode de reducció"
-str_Descripcio2 = "Resol els següents sistemes d'equacions pel mètode de reducció. Omple la fitxa amb els resultats i envia'm per correu electrònic la captura de pantalla amb la puntuació de la fitxa juntament amb una foto de la resolució feta en paper. Pots enviar la fitxa amb major puntuació. Recordeu que als resultats positius no cal afegir el signe al davant." 
-str_Descripcio3 = "\\( \\left. -x +3y = -17 \\atop -3x + 2y = -23 \\right\\} \\) \\( x=5\\) \\( x=-4\\)" 
-
+str_Titol = "Operacions amb Enters";
+str_Subtitol = "Calcula..."
+str_Descripcio = "Calcula les següents operacions amb nombres enters. Pots fer-la fitxa tantes vegades com vulguis. Fes captura de pantalla amb la puntuació màxima i envia'm la foto per correu. Recordeu que als resultats positius no cal afegir el signe al davant." 
 Respuestas = []
 
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min) ) + min;
 }
 
-function Pregunta(i){
-	var x= getRndInteger(-10, 10)
-	var y= getRndInteger(-10, 10)
+function PreguntaA(){
+	// Divisió a / b = c
+	var b= getRndInteger(1, 10)
+	var c= getRndInteger(0, 10)
+	var a= c * b
+	var a_signo= getRndInteger(1,3)
+	var b_signo= getRndInteger(1,3)
+	var str_a= a.toString()
+	var str_b= b.toString()
+	a= Math.pow(-1, a_signo) * a
+	b= Math.pow(-1, b_signo) * b
+	var resultado=  a / b
 
-	var a= getRndInteger(-5, 5)
-	var b= getRndInteger(-5, 5)
-	var c= getRndInteger(-5, 5)
-	var d= getRndInteger(-5, 5)
-	var str_a= ''
-	var str_b= ''
-	var str_c= ''
-	var str_d= ''
-
-	// Eliminar coeficients nuls
-	if (a == 0){
-		a= a-1
-	}
-
-	if (b == 0){
-		b= b-1
-	}
-
-	if (c == 0){
-		c= c-1
-	}
-
-	if (d == 0){
-		d= d-1
-	}
-
-	var e= a*x+b*y
-	var f= c*x+d*y
-	var str_e= e.toString()
-	var str_f= f.toString()
-
-	// No mostrar coeficients 1
-	if (a == 1){
-		str_a= ''
-	} else if(a == -1){
-		str_a= '-'
+	if (a_signo == 2){
+		str_a = '+' + str_a
 	} else {
-		str_a= a.toString()
+		str_a = '-' + str_a
 	}
 
-	if (b == 1){
-		str_b= ''
-	} else if(b == -1){
-		str_b= '-'
-	} else {
-		str_b= b.toString()
-	}
-
-	if (c == 1){
-		str_c= ''
-	} else if(c == -1){
-		str_c= '-'
-	} else {
-		str_c= c.toString()
-	}
-
-	if (d == 1){
-		str_d= ''
-	} else if(d == -1){
-		str_d= '-'
-	} else {
-		str_d= d.toString()
-	}
-
-	// Mostrar signe positiu als coeficientes de la y
-	if (b > 0){
+	if (b_signo == 2){
 		str_b = '+' + str_b
+	} else {
+		str_b = '-' + str_b
 	}
 
-	if (d > 0){
-		str_d = '+' + str_d
-	}
 
-	Respuestas.push(x)
-	Respuestas.push(y)
-	return '\\( \\left. ' + str_a + 'x' + str_b + 'y  =' + str_e + '\\atop ' + str_c + 'x' + str_d +'y = '+ str_f + ' \\right\\} \\)'
-
+	Respuestas.push(resultado)
+	return '\\( \\frac {' + a.toString() + '} {' + b.toString() + '} = (' + str_a + ') : (' + str_b + ')= \\) '
 }
 
+function PreguntaB(){
+	//Suma i resta d'enters
+	var a= getRndInteger(1, 10)
+	var b= getRndInteger(1, 10)
+	var a_signo= getRndInteger(1,3)
+	var b_signo= getRndInteger(1,3)
+	var str_a= a.toString()
+	var str_b= b.toString()
 
+	if (a_signo == 2){
+		str_a = str_a
+	} else {
+		str_a = '-' + str_a
+	}
+
+	if (b_signo == 2){
+		str_b = '+' + str_b
+	} else {
+		str_b = '-' + str_b
+	}
+
+	var resultado= Math.pow(-1, a_signo) * a + Math.pow(-1, b_signo) * b
+
+	Respuestas.push(resultado)
+	return '\\( ' + str_a +' '+ str_b + '= \\)'
+}
+
+function PreguntaC(){
+	//Producte
+	var a= getRndInteger(1, 10)
+	var b= getRndInteger(1, 10)
+	var a_signo= getRndInteger(1,3)
+	var b_signo= getRndInteger(1,3)
+	var str_a= a.toString()
+	var str_b= b.toString()
+	var resultado= Math.pow(-1, a_signo) * a * Math.pow(-1, b_signo) * b
+
+	if (a_signo == 2){
+		str_a = '+' + str_a
+	} else {
+		str_a = '-' + str_a
+	}
+
+	if (b_signo == 2){
+		str_b = '+' + str_b
+	} else {
+		str_b = '-' + str_b
+	}
+
+	Respuestas.push(resultado)
+	return '\\( (' + str_a + ') \\cdot (' + str_b + ')= \\) '
+}
+
+function Pregunta(){
+	var Preg= getRndInteger(1, 5)
+	var strPreg= ''
+	if (Preg == 1 ){
+		strPreg= PreguntaA()
+	} else if (Preg == 2 || Preg == 3){
+		strPreg= PreguntaB()
+	} else {
+		strPreg= PreguntaC()
+	}
+	return strPreg
+}
 function Modificar_I(){
 
 	// Para mayor seguridad vaciar Respuestas
@@ -1401,6 +1409,7 @@ function Modificar_I(){
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
+
 <!-- BeginTopNavButtons -->
 
 
@@ -1420,10 +1429,7 @@ function Modificar_I(){
 </div>
 
 <div id="InstructionsDiv" class="StdDiv">
-	<font size="7"><div id="Instructions"><script type="text/javascript">document.write(str_Descripcio1)</script></div></font>
-	<div id="Instructions"><script type="text/javascript">document.write(str_Descripcio2)</script></div>
-	<font size="5"><div id="Instructions"><script type="text/javascript">document.write(str_Descripcio3)</script></div></font>
-
+	<div id="Instructions"><script type="text/javascript">document.write(str_Descripcio)</script></div>
 	
 </div>
 
@@ -1455,48 +1461,81 @@ function Modificar_I(){
 <form id="Cloze" method="post" autocomplete="off" onsubmit="return false;">
 <div class="ClozeBody">
 
-
-a. <font size="6"><script type="text/javascript">document.write(Pregunta(1))</script></font>
-\( x=\) <span class="GapSpan" id="GapSpan0"><input type="text" autocomplete="off" id="Gap0" onfocus="TrackFocus(0)" onblur="LeaveGap()" class="GapBox" size="6"/></span>
-\( y=\) <span class="GapSpan" id="GapSpan1"><input type="text" autocomplete="off" id="Gap1" onfocus="TrackFocus(1)" onblur="LeaveGap()" class="GapBox" size="6"/></span>
-<br ><br >
-
-b. <font size="6"><script type="text/javascript">document.write(Pregunta(1))</script></font>
-\( x=\) <span class="GapSpan" id="GapSpan2"><input type="text" autocomplete="off" id="Gap2" onfocus="TrackFocus(2)" onblur="LeaveGap()" class="GapBox" size="6"/></span>
-\( y=\) <span class="GapSpan" id="GapSpan3"><input type="text" autocomplete="off" id="Gap3" onfocus="TrackFocus(3)" onblur="LeaveGap()" class="GapBox" size="6"/></span><br >
-<br ><br >
-
-c. <font size="6"><script type="text/javascript">document.write(Pregunta(1))</script></font>
-\( x=\) <span class="GapSpan" id="GapSpan4"><input type="text" autocomplete="off" id="Gap4" onfocus="TrackFocus(4)" onblur="LeaveGap()" class="GapBox" size="6"/></span>
-\( y=\) <span class="GapSpan" id="GapSpan5"><input type="text" autocomplete="off" id="Gap5" onfocus="TrackFocus(5)" onblur="LeaveGap()" class="GapBox" size="6"/></span><br >
-<br ><br >
-
-d. <font size="6"><script type="text/javascript">document.write(Pregunta(1))</script></font>
-\( x=\) <span class="GapSpan" id="GapSpan6"><input type="text" autocomplete="off" id="Gap6" onfocus="TrackFocus(6)" onblur="LeaveGap()" class="GapBox" size="6"/></span>
-\( y=\) <span class="GapSpan" id="GapSpan7"><input type="text" autocomplete="off" id="Gap7" onfocus="TrackFocus(7)" onblur="LeaveGap()" class="GapBox" size="6"/></span><br >
-<br ><br >
-
-e. <font size="6"><script type="text/javascript">document.write(Pregunta(1))</script></font>
-\( x=\) <span class="GapSpan" id="GapSpan8"><input type="text" autocomplete="off" id="Gap8" onfocus="TrackFocus(8)" onblur="LeaveGap()" class="GapBox" size="6"/></span>
-\( y=\) <span class="GapSpan" id="GapSpan9"><input type="text" autocomplete="off" id="Gap9" onfocus="TrackFocus(9)" onblur="LeaveGap()" class="GapBox" size="6"/></span><br >
-<br ><br >
-
-f. <font size="6"><script type="text/javascript">document.write(Pregunta(1))</script></font>
-\( x=\) <span class="GapSpan" id="GapSpan10"><input type="text" autocomplete="off" id="Gap10" onfocus="TrackFocus(10)" onblur="LeaveGap()" class="GapBox" size="6"/></span>
-\( y=\) <span class="GapSpan" id="GapSpan11"><input type="text" autocomplete="off" id="Gap11" onfocus="TrackFocus(11)" onblur="LeaveGap()" class="GapBox" size="6"/></span><br >
-<br ><br >
-
-<!--
-g. <font size="6"><script type="text/javascript">document.write(Pregunta(1))</script></font>
-\( x=\) <span class="GapSpan" id="GapSpan12"><input type="text" autocomplete="off" id="Gap12" onfocus="TrackFocus(12)" onblur="LeaveGap()" class="GapBox" size="6"/></span>
-\( y=\) <span class="GapSpan" id="GapSpan13"><input type="text" autocomplete="off" id="Gap13" onfocus="TrackFocus(13)" onblur="LeaveGap()" class="GapBox" size="6"/></span><br >
-<br ><br >
-
-h. <font size="6"><script type="text/javascript">document.write(Pregunta(1))</script></font>
-\( x=\) <span class="GapSpan" id="GapSpan14"><input type="text" autocomplete="off" id="Gap14" onfocus="TrackFocus(14)" onblur="LeaveGap()" class="GapBox" size="6"/></span>
-\( y=\) <span class="GapSpan" id="GapSpan15"><input type="text" autocomplete="off" id="Gap15" onfocus="TrackFocus(15)" onblur="LeaveGap()" class="GapBox" size="6"/></span><br >
-<br ><br >
--->
+a. <font size="5"><script type="text/javascript">document.write(Pregunta())</script>
+<span class="GapSpan" id="GapSpan0"><input type="text" autocomplete="off" id="Gap0" onfocus="TrackFocus(0)" onblur="LeaveGap()" class="GapBox" size="6"/></span></font>
+<br >
+b. <font size="5"><script type="text/javascript">document.write(Pregunta())</script>
+<span class="GapSpan" id="GapSpan1"><input type="text" autocomplete="off" id="Gap1" onfocus="TrackFocus(1)" onblur="LeaveGap()" class="GapBox" size="6"/></span></font>
+<br >
+c. <font size="5"><script type="text/javascript">document.write(Pregunta())</script>
+<span class="GapSpan" id="GapSpan2"><input type="text" autocomplete="off" id="Gap2" onfocus="TrackFocus(2)" onblur="LeaveGap()" class="GapBox" size="6"/></span></font>
+<br >
+d. <font size="5"><script type="text/javascript">document.write(Pregunta())</script>
+<span class="GapSpan" id="GapSpan3"><input type="text" autocomplete="off" id="Gap3" onfocus="TrackFocus(3)" onblur="LeaveGap()" class="GapBox" size="6"/></span></font>
+<br >
+e. <font size="5"><script type="text/javascript">document.write(Pregunta())</script> 
+<span class="GapSpan" id="GapSpan4"><input type="text" autocomplete="off" id="Gap4" onfocus="TrackFocus(4)" onblur="LeaveGap()" class="GapBox" size="6"/></span></font>
+<br >
+f. <font size="5"><script type="text/javascript">document.write(Pregunta())</script>
+<span class="GapSpan" id="GapSpan5"><input type="text" autocomplete="off" id="Gap5" onfocus="TrackFocus(5)" onblur="LeaveGap()" class="GapBox" size="6"/></span></font>
+<br >
+g. <font size="5"><script type="text/javascript">document.write(Pregunta())</script>
+<span class="GapSpan" id="GapSpan6"><input type="text" autocomplete="off" id="Gap6" onfocus="TrackFocus(6)" onblur="LeaveGap()" class="GapBox" size="6"/></span></font>
+<br >
+h. <font size="5"><script type="text/javascript">document.write(Pregunta())</script>
+<span class="GapSpan" id="GapSpan7"><input type="text" autocomplete="off" id="Gap7" onfocus="TrackFocus(7)" onblur="LeaveGap()" class="GapBox" size="6"/></span></font>
+<br >
+i. <font size="5"><script type="text/javascript">document.write(Pregunta())</script>
+<span class="GapSpan" id="GapSpan8"><input type="text" autocomplete="off" id="Gap8" onfocus="TrackFocus(8)" onblur="LeaveGap()" class="GapBox" size="6"/></span></font>
+<br >
+j. <font size="5"><script type="text/javascript">document.write(Pregunta())</script>
+<span class="GapSpan" id="GapSpan9"><input type="text" autocomplete="off" id="Gap9" onfocus="TrackFocus(9)" onblur="LeaveGap()" class="GapBox" size="6"/></span></font>
+<br >
+k. <font size="5"><script type="text/javascript">document.write(Pregunta())</script>
+<span class="GapSpan" id="GapSpan10"><input type="text" autocomplete="off" id="Gap10" onfocus="TrackFocus(10)" onblur="LeaveGap()" class="GapBox" size="6"/></span></font>
+<br >
+l. <font size="5"><script type="text/javascript">document.write(Pregunta())</script>
+<span class="GapSpan" id="GapSpan11"><input type="text" autocomplete="off" id="Gap11" onfocus="TrackFocus(11)" onblur="LeaveGap()" class="GapBox" size="6"/></span></font>
+<br >
+m. <font size="5"><script type="text/javascript">document.write(Pregunta())</script>
+<span class="GapSpan" id="GapSpan12"><input type="text" autocomplete="off" id="Gap12" onfocus="TrackFocus(12)" onblur="LeaveGap()" class="GapBox" size="6"/></span></font>
+<br >
+n. <font size="5"><script type="text/javascript">document.write(Pregunta())</script>
+<span class="GapSpan" id="GapSpan13"><input type="text" autocomplete="off" id="Gap13" onfocus="TrackFocus(13)" onblur="LeaveGap()" class="GapBox" size="6"/></span></font>
+<br >
+o. <font size="5"><script type="text/javascript">document.write(Pregunta())</script>
+<span class="GapSpan" id="GapSpan14"><input type="text" autocomplete="off" id="Gap14" onfocus="TrackFocus(14)" onblur="LeaveGap()" class="GapBox" size="6"/></span></font>
+<br >
+p. <font size="5"><script type="text/javascript">document.write(Pregunta())</script>
+<span class="GapSpan" id="GapSpan15"><input type="text" autocomplete="off" id="Gap15" onfocus="TrackFocus(15)" onblur="LeaveGap()" class="GapBox" size="6"/></span></font>
+<br >
+q. <font size="5"><script type="text/javascript">document.write(Pregunta())</script>
+<span class="GapSpan" id="GapSpan16"><input type="text" autocomplete="off" id="Gap16" onfocus="TrackFocus(16)" onblur="LeaveGap()" class="GapBox" size="6"/></span></font>
+<br >
+r. <font size="5"><script type="text/javascript">document.write(Pregunta())</script>
+<span class="GapSpan" id="GapSpan17"><input type="text" autocomplete="off" id="Gap17" onfocus="TrackFocus(17)" onblur="LeaveGap()" class="GapBox" size="6"/></span></font>
+<br >
+s. <font size="5"><script type="text/javascript">document.write(Pregunta())</script>
+<span class="GapSpan" id="GapSpan18"><input type="text" autocomplete="off" id="Gap18" onfocus="TrackFocus(18)" onblur="LeaveGap()" class="GapBox" size="6"/></span></font>
+<br >
+t. <font size="5"><script type="text/javascript">document.write(Pregunta())</script>
+<span class="GapSpan" id="GapSpan19"><input type="text" autocomplete="off" id="Gap19" onfocus="TrackFocus(19)" onblur="LeaveGap()" class="GapBox" size="6"/></span></font>
+<br >
+u. <font size="5"><script type="text/javascript">document.write(Pregunta())</script>
+<span class="GapSpan" id="GapSpan20"><input type="text" autocomplete="off" id="Gap20" onfocus="TrackFocus(20)" onblur="LeaveGap()" class="GapBox" size="6"/></span></font>
+<br >
+v. <font size="5"><script type="text/javascript">document.write(Pregunta())</script>
+<span class="GapSpan" id="GapSpan21"><input type="text" autocomplete="off" id="Gap21" onfocus="TrackFocus(21)" onblur="LeaveGap()" class="GapBox" size="6"/></span></font>
+<br >
+x. <font size="5"><script type="text/javascript">document.write(Pregunta())</script>
+<span class="GapSpan" id="GapSpan22"><input type="text" autocomplete="off" id="Gap22" onfocus="TrackFocus(22)" onblur="LeaveGap()" class="GapBox" size="6"/></span></font>
+<br >
+y. <font size="5"><script type="text/javascript">document.write(Pregunta())</script>
+<span class="GapSpan" id="GapSpan23"><input type="text" autocomplete="off" id="Gap23" onfocus="TrackFocus(23)" onblur="LeaveGap()" class="GapBox" size="6"/></span></font>
+<br >
+z. <font size="5"><script type="text/javascript">document.write(Pregunta())</script>
+<span class="GapSpan" id="GapSpan24"><input type="text" autocomplete="off" id="Gap24" onfocus="TrackFocus(24)" onblur="LeaveGap()" class="GapBox" size="6"/></span></font>
+<br >
 
 <script type="text/javascript">Modificar_I()</script>
 

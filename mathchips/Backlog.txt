@@ -1,0 +1,10 @@
+Operacions combinades d'enters
+suma de multiples parèntesis
+Eliminació de parèntesis
+mcm
+MCD
+Factorització
+Nombres primers
+Oposat d'un nombre
+Valor absolut d'un nombre
+Colocar a la recta numérica
