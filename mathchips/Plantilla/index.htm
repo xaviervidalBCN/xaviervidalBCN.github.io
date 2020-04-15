@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" prefix="dc: http://purl.org/dc/elements/1.1/">
+<head><meta name="author" content=""/><meta name="keywords" content=""/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+<meta name="dc:creator" content="@xjavedu" />
+<meta name="dc:title" content="math"/>
+
+
+
+<title>
+</title>
+
+<!-- BeginWebStyle <style> -->
+<link href="style.css" rel="stylesheet" type="text/css">
+
+<!-- EndnWebStyle </style> -->
+
+
+
+<!-- BeginJavaScriptExternal -->
+
+<script src="text_interface.js" type="text/javascript"></script>
+<script src="control.js" type="text/javascript"></script>
+<script src="preguntes.js" type="text/javascript"></script>
+<script type="text/javascript">document.title = str_ExerciseTitle</script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<!-- EndJavaScriptExternal -->
+
+<body onload="StartUp()" id="TheBody" onunload="CheckLMSFinish()">
+
+
+<div class="Titles">
+	<h2 class="ExerciseTitle"><script type="text/javascript">document.write(str_ExerciseTitle)</script></h2>
+
+	<h3 class="ExerciseSubtitle"><script type="text/javascript">document.write(str_ExerciseSubtitle)</script></h3>
+
+
+
+</div>
+
+<div id="InstructionsDiv" class="StdDiv">
+	<h3><div id="Instructions"><script type="text/javascript">document.write(str_Instructions1)</script></div></font></h3>
+	<div id="Instructions"><script type="text/javascript">document.write(str_Instructions2)</script></div>
+	<font size="5"><div id="Instructions"><script type="text/javascript">document.write(str_Instructions3)</script></div></font>
+</div>
+
+<div id="InstructionsFeedBack" class="StdFeedBack">
+</div>
+
+<div id="ContainerDiv">
+
+
+
+<div class="ExerciseContainer">
+
+
+
+
+
+
+<!-- These top buttons hidden; reveal if required -->
+
+<button id="CheckButton1" class="FuncButton" onclick="CheckAnswers()">&#160;<script type="text/javascript">document.write(str_Check)</script>&#160;</button>
+
+
+
+ 
+ 
+<div id="ClozeDiv">
+<form id="Cloze" method="post" autocomplete="off" onsubmit="return false;">
+<div class="ClozeBody">
+
+a. <script type="text/javascript">document.write(PreguntaWeb())</script>
+
+b. <script type="text/javascript">document.write(PreguntaWeb())</script>
+
+c. <script type="text/javascript">document.write(PreguntaWeb())</script>
+
+
+</div>
+</form>
+</div>
+
+
+
+<button id="CheckButton2" class="FuncButton" onclick="CheckAnswers()">&#160;<script type="text/javascript">document.write(str_Check)</script>&#160;</button>
+
+
+
+</div>
+
+</div>
+
+
+<div class="Feedback" id="FeedbackDiv">
+<div class="FeedbackText" id="FeedbackContent"></div>
+<button id="FeedbackOKButton" class="FuncButton" onclick="HideFeedback(); return false;">&#160;<script type="text/javascript">document.write(str_OK)</script>&#160;</button>
+</div>
+
+<!-- BeginBottomNavButtons -->
+
+
+
+<!-- EndBottomNavButtons -->
+
+<!-- BeginSubmissionForm -->
+
+<!-- EndSubmissionForm -->
+
+</body>
+
+</html>

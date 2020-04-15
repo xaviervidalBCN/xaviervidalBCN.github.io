@@ -1,5 +1,3 @@
-Operacions combinades d'enters
-suma de multiples parèntesis
 Eliminació de parèntesis
 mcm
 MCD
@@ -8,3 +6,15 @@ Nombres primers
 Oposat d'un nombre
 Valor absolut d'un nombre
 Colocar a la recta numérica
+Equacions de segon grau
+	Coeficients
+		Ordenats
+		Desordenats
+		Agrupar
+	Resolució d'equacions de segon grau
+		Ordenats
+		Desordenats
+		Agrupar
+	Cálculo por soluciones
+	Sin solución
+ 
